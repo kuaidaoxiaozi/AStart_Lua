@@ -52,6 +52,19 @@ function map:fun_InitMap()
 end
 
 function map:fun_DebugMapPath(node_s, node_e, path)
+    if node_s == nil or node_s == nil then
+        print("起点或重点为空")
+        return
+    end
+
+    if path == nil then
+        print("路径为空")
+        return
+    end
+
+    print(self.StartStr .. "坐标：( " .. node_s.X .. ", " .. node_s.Y .. " )")
+    print(self.EndStr .."坐标：( " .. node_e.X .. ", " .. node_e.Y .. " )\n")
+
     local pathMap = {}
     for key, value in pairs(path) do
         pathMap[value:fun_PosTag()] = value
@@ -100,5 +113,6 @@ end
 print("--- 地图显示说明 ---")
 print(map.StartStr .. "表示起点")
 print(map.EndStr .. "表示终点")
+print("地图左上角为(0, 0)点")
 print("-------------------\n")
 return map
